@@ -1,0 +1,47 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    commit-message:
+      prefix: "[skip ci]"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      trpc:
+        patterns:
+          - "@trpc/*"
+      codegen:
+        patterns:
+          - "@graphql-codegen/*"
+      rtl:
+        patterns:
+          - "@testing-library/*"
+      vanilla-extract:
+        patterns:
+          - "@vanilla-extract/*"
+      vite:
+        patterns:
+          - "vite"
+          - "vitest"
+          - "@vitejs/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      pollyjs:
+        patterns:
+          - "@pollyjs/*"
+
+  - package-ecosystem: "github-actions"
+    commit-message:
+      prefix: "[skip ci]"
+    directory: "/"
+    schedule:
+      interval: "weekly"
