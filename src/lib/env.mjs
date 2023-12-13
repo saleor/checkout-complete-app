@@ -19,6 +19,8 @@ export const env = createEnv({
 			.default("error"),
 		REST_APL_ENDPOINT: z.string().optional(),
 		REST_APL_TOKEN: z.string().optional(),
+		APP_IFRAME_BASE_URL: z.string().optional(),
+		APP_API_BASE_URL: z.string().optional(),
 	},
 
 	/*
@@ -43,5 +45,7 @@ export const env = createEnv({
 		APP_DEBUG: process.env.APP_DEBUG,
 		REST_APL_ENDPOINT: process.env.REST_APL_ENDPOINT,
 		REST_APL_TOKEN: process.env.REST_APL_TOKEN,
+		APP_IFRAME_BASE_URL: process.env.APP_IFRAME_BASE_URL,
+		APP_API_BASE_URL: process.env.APP_API_BASE_URL,
 	},
 });

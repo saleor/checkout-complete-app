@@ -1,0 +1,12 @@
+fragment CheckoutFullyPaidEvent on CheckoutFullyPaid {
+	checkout {
+		id
+	}
+}
+subscription CheckoutFullyPaid {
+	event {
+		... on CheckoutFullyPaid {
+			...CheckoutFullyPaidEvent
+		}
+	}
+}
