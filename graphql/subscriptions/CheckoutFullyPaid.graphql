@@ -1,0 +1,9 @@
+subscription CheckoutFullyPaid {
+	event {
+		... on CheckoutFullyPaid {
+			checkout {
+				id
+			}
+		}
+	}
+}

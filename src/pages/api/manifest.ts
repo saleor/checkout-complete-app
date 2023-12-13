@@ -1,6 +1,7 @@
 import { createManifestHandler } from "@saleor/app-sdk/handlers/next";
 import { type AppManifest } from "@saleor/app-sdk/types";
 import packageJson from "../../../package.json";
+import { checkoutFullyPaidAsyncWebhook } from "./checkout-fully-paid";
 
 export default createManifestHandler({
 	async manifestFactory(context) {
@@ -12,9 +13,9 @@ export default createManifestHandler({
 			permissions: ["HANDLE_PAYMENTS"],
 			version: packageJson.version,
 			requiredSaleorVersion: ">=3.15",
-			homepageUrl: "https://github.com/saleor/saleor-app-payment-stripe",
-			supportUrl: "https://github.com/saleor/saleor-app-payment-stripe/issues",
-			webhooks: [],
+			homepageUrl: "https://github.com/saleor/checkout-complete-app",
+			supportUrl: "https://github.com/saleor/checkout-complete-app/issues",
+			webhooks: [checkoutFullyPaidAsyncWebhook.getWebhookManifest(context.appBaseUrl)],
 			extensions: [],
 		};
 
