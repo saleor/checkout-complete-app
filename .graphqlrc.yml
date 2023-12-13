@@ -18,6 +18,7 @@ extensions:
           scalars:
             _Any: "unknown"
             Date: "string"
+            Day: "number"
             DateTime: "string"
             Decimal: "number"
             Minute: "number"
@@ -38,11 +39,4 @@ extensions:
           - typescript-operations:
               skipTypeNameForRoot: true
               exportFragmentSpreadSubTypes: true
-          - urql-introspection
-          - typescript-urql:
-              documentVariablePrefix: "Untyped"
-              fragmentVariablePrefix: "Untyped"
           - typed-document-node
-      generated/schema.graphql:
-        plugins:
-          - schema-ast

@@ -1,11 +1,11 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.run": "onSave",
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
-  "graphql-config.load.rootDir": "./",
-  "graphql-config.load.configName": "graphql"
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"eslint.run": "onSave",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "always"
+	},
+	"graphql-config.load.rootDir": "./",
+	"graphql-config.load.configName": "graphql"
 }
