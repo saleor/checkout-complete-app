@@ -6,7 +6,7 @@ import {
 	CheckoutCompleteDocument,
 	type CheckoutCompleteMutationVariables,
 	CheckoutFullyPaidDocument,
-	type CheckoutFullyPaidSubscription,
+	type CheckoutFullyPaidEventFragment,
 } from "generated/graphql";
 
 export const config: PageConfig = {
@@ -15,19 +15,22 @@ export const config: PageConfig = {
 	},
 };
 
-export const checkoutFullyPaidAsyncWebhook = new SaleorAsyncWebhook<CheckoutFullyPaidSubscription>({
-	name: "CheckoutFullyPaid",
-	apl: saleorApp.apl,
-	event: "CHECKOUT_FULLY_PAID",
-	query: CheckoutFullyPaidDocument,
-	webhookPath: "/api/checkout-fully-paid",
-});
+export const checkoutFullyPaidAsyncWebhook = new SaleorAsyncWebhook<CheckoutFullyPaidEventFragment>(
+	{
+		name: "CheckoutFullyPaid",
+		apl: saleorApp.apl,
+		event: "CHECKOUT_FULLY_PAID",
+		query: CheckoutFullyPaidDocument,
+		webhookPath: "/api/checkout-fully-paid",
+	},
+);
 
 export default checkoutFullyPaidAsyncWebhook.createHandler(async (req, res, ctx) => {
-	if (!ctx.payload.event || !("checkout" in ctx.payload.event) || !ctx.payload.event.checkout) {
+	console.log("CheckoutFullyPaid", ctx.payload);
+	if (!ctx.payload || !("checkout" in ctx.payload) || !ctx.payload.checkout) {
 		return res.status(400).json("Invalid event");
 	}
-	const checkoutId = ctx.payload.event.checkout.id;
+	const checkoutId = ctx.payload.checkout.id;
 
 	console.log(`Checkout ${checkoutId} fully paid`);
 

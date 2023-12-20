@@ -19,6 +19,8 @@ export const env = createEnv({
 			.default("error"),
 		REST_APL_ENDPOINT: z.string().optional(),
 		REST_APL_TOKEN: z.string().optional(),
+		APP_IFRAME_BASE_URL: z.string().optional(),
+		APP_API_BASE_URL: z.string().optional(),
 	},
 
 	/*
