@@ -7,6 +7,7 @@ import {
 	type CheckoutCompleteMutationVariables,
 	CheckoutFullyPaidDocument,
 	type CheckoutFullyPaidEventFragment,
+	type CheckoutCompleteMutation,
 } from "generated/graphql";
 
 export const config: PageConfig = {
@@ -45,6 +46,15 @@ export default checkoutFullyPaidAsyncWebhook.createHandler(async (req, res, ctx)
 
 	if (!response.ok) {
 		console.error(`Checkout ${checkoutId} fully paid failed`, response.status, response.statusText);
+	}
+
+	try {
+		const json = (await response.json()) as CheckoutCompleteMutation;
+		if (json?.checkoutComplete?.errors?.length ?? 0 > 0) {
+			console.error(`Checkout ${checkoutId} fully paid failed`, json?.checkoutComplete?.errors);
+		}
+	} catch (err) {
+		console.error(`Checkout ${checkoutId} fully paid failed - unparsable response`);
 	}
 
 	return res.status(200).json("OK");
