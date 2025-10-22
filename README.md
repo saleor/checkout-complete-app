@@ -12,3 +12,6 @@
   <a href="https://docs.saleor.io/docs/3.x/">Docs</a>
 
 </div>
+
+> [!DANGER]
+> This app is deprecated. Automatic checkout completion is now built natively into Saleor since version 3.20. Please refer to [Automatic Checkout completion docs](https://docs.saleor.io/developer/payments/transactions#automatic-checkout-completion) to learn more.
